@@ -1,4 +1,4 @@
-package com.quruiqi;
+package com.quruiqi.sparsearray;
 
 /**
  * 稀疏数组

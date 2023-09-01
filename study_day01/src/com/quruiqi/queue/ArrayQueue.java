@@ -1,13 +1,13 @@
-package com.quruiqi;
+package com.quruiqi.queue;
 
 import java.util.Scanner;
 
 /**
- * 环形队列
+ * 队列
  * @Author Lenovo
- * @Date 2023/8/31 10:57
+ * @Date 2023/8/31 10:27
  **/
-public class CircleArrayQueue {
+public class ArrayQueue {
 
     private int rear;
 
@@ -17,74 +17,72 @@ public class CircleArrayQueue {
 
     private Object[] queue;
 
-    CircleArrayQueue(int maxSize){
+    //初始化
+    ArrayQueue(int maxSize){
         this.maxSize = maxSize;
         queue = new Object[maxSize];
-        rear = 0;
-        front = 0;
+        rear = -1;
+        front = -1;
     }
 
-    //队满
-    private boolean isFull(){
-        return (rear + 1) % maxSize == front;
+    //判断是否满队
+    public boolean isFull(){
+        return rear == maxSize - 1;
     }
 
-    //队空
-    private boolean isEmpty(){
+    //判断是否队空
+    public boolean isEmpty(){
         return rear == front;
     }
 
-    //往队列添加
+    //给队列添加数据
     public void addQueue(int data){
 
+        //判断队满
         if (isFull()){
             throw new RuntimeException("队满");
         }
 
+        rear++;
         queue[rear] = data;
-        rear = (rear + 1) % maxSize;
     }
 
-    //取值
+    //出队
     public int removeQueue(){
 
+        //判断队空
         if (isEmpty()){
             throw new RuntimeException("队空");
         }
 
-        int result = (int) queue[front];
-        front = (front + 1) % maxSize;
-        return result;
-
+        front++;
+        return (int) queue[front];
     }
 
-    //展示
-    public void show(){
+    //拿出头一个数据
+    public int getTop(){
 
+        //判断对空
         if (isEmpty()){
             throw new RuntimeException("队空");
         }
 
-        for (int i = 0; i < queue.length; i++) {
+        return (int) queue[front + 1];
+    }
+
+    //展示队列数据
+    public void show(){
+        if (isEmpty()){
+            throw new RuntimeException("队空");
+        }
+
+        for (int i = 0; i < queue.length;i++){
             System.out.printf("%d\t", queue[i]);
         }
     }
 
-    //拿到首值
-    public int getTop(){
-
-        if (isEmpty()){
-            throw new RuntimeException("队空");
-        }
-
-        return (int) queue[front];
-
-    }
-
     public static void main(String[] args) {
-        //ArrayQueue queue = new ArrayQueue(3);
-        //有效空间为3 有一个预留位置
-        CircleArrayQueue queue = new CircleArrayQueue(4);
+        ArrayQueue queue = new ArrayQueue(3);
         String index = "";//接收用户字符串
 
         Scanner scanner = new Scanner(System.in);

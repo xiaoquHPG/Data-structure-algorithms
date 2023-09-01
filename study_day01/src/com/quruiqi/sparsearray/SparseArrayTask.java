@@ -1,4 +1,4 @@
-package com.quruiqi;
+package com.quruiqi.sparsearray;
 
 import java.io.*;
 import java.util.ArrayList;
