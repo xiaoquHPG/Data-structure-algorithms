@@ -1,4 +1,4 @@
-package com.quruiqi.LinkedList;
+package com.quruiqi.linkedList;
 
 /**
  * 循环单向链表

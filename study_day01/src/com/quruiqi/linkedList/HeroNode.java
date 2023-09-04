@@ -1,4 +1,4 @@
-package com.quruiqi.LinkedList;
+package com.quruiqi.linkedList;
 
 /**
  * @Author Lenovo

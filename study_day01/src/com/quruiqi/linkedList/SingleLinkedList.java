@@ -1,4 +1,4 @@
-package com.quruiqi.LinkedList;
+package com.quruiqi.linkedList;
 
 import java.util.Objects;
 import java.util.Stack;
